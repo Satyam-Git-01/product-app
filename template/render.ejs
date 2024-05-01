@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>contact page</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/product.css">
+</head>
+
+<body>
+    <header class="main-header">
+        <nav class="main-header__nav">
+            <ul class="main-header__item-list">
+                <li class="main-header__item"><a class="active" href="/">Shop</a></li>
+                <li class="main-header__item"><a href="/admin/add-product">Add Product</a></li>
+                <li class="main-header__item"><a class="active" href="/contact">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+    <ul>
+
+    <% if(!Array.isArray(content)){
+        const desc= content.desc;
+        %>
+        <p > <%= desc %> </p>
+        <% }
+        
+        else { %>
+        
+
+<% content.forEach((ele)=>{ %>
+
+            <li class="products"> Title = <%= ele.title %> <br> 
+            Price = <%= ele.price %> <br>
+            
+            <form  action="/admin/get-product/<%= ele.id %>" method="GET">
+                <button type='submit'>Details</button>
+            </form>
+            <form  action="/admin/delete-product/<%= ele.id %>" method="DELETE">
+                <button type='submit'>Delete</button>
+            </form>
+            <br></li>
+          <%  })  } %>
+
+
+    </ul>
+</body>
+
+</html>
